@@ -1,0 +1,39 @@
+<table align="center">
+        <tr>
+                 <td>
+                        product name:<%= @products.product_name%>
+                 </td>
+         </tr>
+                        <%form_for :category, @purchage :url=>{:action=> "purchage"} do |f|%>
+         <tr>
+                  <td>
+                         Bank Name: <%= radio_button("category","bank_name", "SBI")%> SBI                </br>
+                                           <%= radio_button("category","bank_name", "Andhra Bank")%>  Andhra Bank </br>
+                                           <%= radio_button("category","bank_name", "City")%> City Bank </br>
+                                           <%= radio_button("category","bank_name", "HDFC")%>  HDFC </br>
+                                           <%= radio_button("category","bank_name", "HSBC")%> HSBC </br>
+                                           <%= radio_button("category","bank_name", "Axis")%>  Axis Bank </br>
+                   </td>
+         </tr>
+
+         <tr>
+                  <td>
+                         ATM pin number: <%= f.text_field :atm_number%>
+                 </td>
+         </tr>
+
+         <tr>
+                  <td>
+                         Amount: <%= f.text_field :amount%>
+                   </td>
+          </tr>
+
+          <tr>
+                  <td>
+                         <%= f.submit "Ener"%>
+                 </td>
+           </tr>
+
+                <% end %>
+</table>
+

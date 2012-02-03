@@ -1,0 +1,49 @@
+                <table align="center">
+                        <tr><td>
+                        <%= link_to "Go to home", "/categories"%>
+                        </td></tr>
+                </table>
+
+                <%if session[:product_id] %>
+
+                        <div align="center">
+                        <b style="background:#B47FF5 ; color:white">No.of items you selected </b> : <b style="background:#65389C ; color:white"> <%= @total%></b>
+                        </div>
+
+                        <% @productids.each do |p|%>
+                        <table align="center"  width="16%" border="1" rules="rows" style="background:#54BF86; color:white">
+                                <tr>
+                                        <td width="40%">
+                                                <%= image_tag p.kvr.url(:thumb) %>
+                                                Product Name: <%= p.product_name %></br>
+                                                Price:  <b style="background:green ; color:white">  <%=p.price * @session.select{|x| x == p.id }.size %> </b>
+                                         </td>
+                                          <td width="60%" style="background:#F5EE9F ; color:green ; text-align:center">
+
+                                                <%= button_to "Remove", {:controller=> "products", :action=> "destroy_session", :id=>p.id }, :confirm=> "Are u sure to delete?"%> </br>
+                                                <%= text_field_tag '', @session.select{|x| x == p.id }.size, :size=> "3x10" %> </br>
+                                                <%#=text_field_tag(:reqno_of)%>
+
+                                                <%if @session.select{|x| x == p.id }.size==1%>
+                                                       <b style="background:#B47FF5 ; color:white"> <%= @session.select{|x| x == p.id }.size%> </b> Item only
+                                                <%else%>
+                                                        <b style="background:#B47FF5 ; color:white"> <%= @session.select{|x| x == p.id }.size%> </b> Items
+                                                 <%end%>
+
+                                         </td>
+                                </tr>
+                                 <tr>
+                                        <td width="100%"> <div style="background:white ; color:green"> <marquee> products </marquee></div></td>
+                                 </tr>
+                        </table>
+                        <% end %>
+                        <div align="center">
+                                 <%= button_to "Update", {:controller=> "products", :action=> "session_update"}%>
+                        </div>
+
+                <%else%>
+                        <div align="center">
+                              No products you selected.
+                        </div>
+                <%end %>
+

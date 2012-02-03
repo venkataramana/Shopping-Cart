@@ -1,0 +1,36 @@
+<h1>Listing products</h1>   <hr>
+
+        <%=link_to "New file", "/products/new"%> </br>
+
+         <table align="center">
+                        <% form_tag  products_path, :method => 'get' do %>
+                       <tr>
+                             <td>
+                                 <%= text_field_tag :search, params[:search], :placeholder=>"Search here:"%>
+                                <%= submit_tag "Search", :product_name => nil%>
+                            </td>
+                     </tr>
+                <% end %>
+        </table>
+
+        <table>
+                 <tr>
+                         <th>Product name</th>
+                         <th>Price</th>
+                </tr>
+
+        <% @products.each do |product| %>
+                <tr>
+                         <td><%= product.product_name %></td>
+                        <td><%= product.price %> </td>
+                        <td><%= image_tag product.kvr.url(:thumb) %> </td>
+                </tr>
+        <% end %>
+        </table>
+
+        <table align="center">
+                 <tr>
+                        <td>  <%= will_paginate @products %> </td>
+                 </tr>
+         </table>
+

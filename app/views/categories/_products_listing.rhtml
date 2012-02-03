@@ -1,0 +1,13 @@
+
+     <%= link_to "Go to Cart " , product_session_path%> </br>
+    <%for p in products%>
+                  <%= image_tag p.kvr.url(:thumb) %>
+                   Name:<%= p.product_name%>;
+                   Price:<%=p.price%>$
+                   Quantity:<%=p.quantity%>
+                   <%= button_to "Buy Now", "products/add_product_to_session/#{p.id}"%>
+     <%end%>
+
+
+  <%= link_to "Go to Cart " , product_session_path%>
+

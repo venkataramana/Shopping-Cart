@@ -1,0 +1,59 @@
+
+ <hr style="color:red"><h3><u>Listing categories</u></h3>
+
+ <table width="100%">
+        <tr>
+                <td width="15%" valign="top">
+                         <table border="1"  style="background:#E3E2AC" width="100%">
+                                <tr>
+                                        <th style="background:#E06A1B">Category name</th>
+                                </tr>
+
+                                <% @categories.each do |category| %>
+                                <tr>
+                                        <td> <%#=link_to category.category_name, :url => {:action => "ajaxaction" }%>
+                                        <%= link_to category.category_name, {:controller => :categories,  :action => "ajaxaction", :id => category.id }, :remote => true %>
+                                        </td>
+                                </tr>
+                                 <% end %>
+                                <tr  style="height:400px">
+                                        <td valign="top" style="background:orange ; color:white"> We are saling all types of cloths for all categories.. you can buy them online....
+                                              <marquee><img src="/images/girl.jpg" style="height:300px ; width:200px">
+                                                <img src="/images/suit.jpg" style="height:300px ; width:200px"></marquee>
+                                                ...If you want any help just mail us at: </br> <a href="http://localhost:3000/admin/categories" target="base">kvramana@gmail.com </a>
+                                        </td>
+                               </tr>
+                        </table>
+                 </td>
+                 <td valign="top">
+                        <u style="color:red"> Products_list </u>
+
+                        <div id="products" align="left" style="background:#E9ED91">
+
+                                <% @products.each do |p| %>
+                                        <%=image_tag p.kvr.url(:thumb)%>
+                                        Price:<%=p.price%>
+                                 <%end%>
+                        </div>
+
+                 </td>
+
+        </tr>
+  </table>
+
+                        <% form_tag({:action => :ajax_filter}, :remote => true, :method => :get) do %>
+         <table align="center">
+
+                       <tr>
+                             <td  style="background:#B47FF5 ; color:white">
+                                 <%= text_field_tag :search, params[:search], :placeholder=>"Search here: "%>
+                                <%= submit_tag "-->", :product_name => nil%>
+                                <%= flash[:notice] %>
+                            </td>
+                     </tr>
+          </table>
+
+                <% end %>
+
+                <hr style="color:red">
+

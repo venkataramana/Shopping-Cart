@@ -1,0 +1,6 @@
+        page.replace_html "products", :partial => "products_listing", :locals => {:products => @products}
+        #page.replace_html params[:updatewith], :text => params[:update_this]
+
+
+#page.alert(@products.inspect)
+

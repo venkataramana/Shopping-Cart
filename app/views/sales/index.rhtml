@@ -1,0 +1,13 @@
+<table align="center">
+        <tr>
+                <th> Product Name</th>
+                <th> Amount Paid</th>
+        </tr>
+        <% @sales.each do |s|%>
+             <tr> <td>jkjh</td>
+                     <td>   <%= s.amount%> </td>
+             </tr>
+        <%end%>
+</table>
+        <%= link_to "Back to product list", categories_path%>
+

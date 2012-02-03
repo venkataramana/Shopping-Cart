@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  bank_name: MyString
+  atm_number: MyString
+  amount: 9.99
+
+two:
+  bank_name: MyString
+  atm_number: MyString
+  amount: 9.99

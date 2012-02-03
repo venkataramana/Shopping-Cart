@@ -1,0 +1,23 @@
+
+
+
+
+        <%=form_for @sale, :url=> {:action=> "create"} do |f|%>
+<table>
+        <tr>
+                <td>  Gender: <%= radio_button("sale","bank_name", "SBI")%> SBI
+                                     <%= radio_button("sale","bank_name", "City")%>City Bank
+                                     <%= radio_button("sale","bank_name", "HDFC")%> HDFC
+                                     <%= radio_button("sale","bank_name", "HSBC")%>HSBC
+              </td>
+      </tr>
+      <tr>
+                <td> ATM Number:<%= f.text_field :atm_number%></td>
+     </tr>
+     <tr>
+                <td>Amount: <%= f.text_field :amount%></td>
+     </tr>
+</table>
+<%=f.submit "Enter"%>
+ <%end%>
+
